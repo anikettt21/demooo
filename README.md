@@ -39,7 +39,7 @@ This project demonstrates a functional shopping cart, product management, and si
 ## 🔧 How to Run
 1.  **Clone the repository**:
     ```bash
-    git clone https://github.com/yourusername/local-computer-shop.git
+    git clone https://github.com/anikettt21/demooo.git
     ```
 2.  **Open `index.html`**:
     Simply double-click `index.html` to open it in your browser. No server required!
