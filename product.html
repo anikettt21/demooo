@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - Computer Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="images/logo.png" alt="Computer Hub" style="height: 40px; display: block;">
+                Computer Hub
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="cart.html" id="cart-link">Cart (0)</a></li>
+                    <li id="auth-links"></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container" style="padding: 40px 0;">
+        <a href="index.html" style="color: grey;">&larr; Back to Shop</a>
+
+        <div id="product-detail-container" style="display: flex; gap: 40px; margin-top: 20px; flex-wrap: wrap;">
+
+            <div style="flex: 1; min-width: 300px;">
+                <img id="detail-image" src="" alt="Product Image"
+                    style="width: 100%; border-radius: 10px; box-shadow: var(--shadow);">
+            </div>
+
+            <div style="flex: 1; min-width: 300px;">
+                <h1 id="detail-name" style="margin-bottom: 10px;">Product Name</h1>
+                <p id="detail-category" style="color: grey; margin-bottom: 20px;">Category</p>
+                <div id="detail-price"
+                    style="font-size: 2rem; color: var(--primary-color); font-weight: bold; margin-bottom: 20px;">$0.00
+                </div>
+
+                <p id="detail-desc" style="line-height: 1.8; margin-bottom: 30px;">
+                    Description loading...
+                </p>
+
+                <button id="add-to-cart-btn" class="btn" style="padding: 15px 30px; font-size: 1.1rem;">Add to
+                    Cart</button>
+            </div>
+
+        </div>
+
+        <!-- Reviews Section -->
+        <div id="reviews-section"
+            style="margin-top: 60px; background: var(--card-bg); padding: 30px; border-radius: var(--radius); box-shadow: var(--shadow-sm);">
+            <h2 style="margin-bottom: 20px;">Customer Reviews</h2>
+
+            <div id="reviews-list" style="margin-bottom: 30px;">
+                <p>No reviews yet. Be the first to review!</p>
+            </div>
+
+            <div id="review-form-container" style="border-top: 1px solid var(--border-color); padding-top: 20px;">
+                <h3 style="margin-bottom: 15px;">Write a Review</h3>
+                <form id="review-form">
+                    <div class="form-group">
+                        <label>Rating</label>
+                        <select id="review-rating" required style="max-width: 150px;">
+                            <option value="5">⭐⭐⭐⭐⭐ (5)</option>
+                            <option value="4">⭐⭐⭐⭐ (4)</option>
+                            <option value="3">⭐⭐⭐ (3)</option>
+                            <option value="2">⭐⭐ (2)</option>
+                            <option value="1">⭐ (1)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Comment</label>
+                        <textarea id="review-comment" rows="3" required placeholder="Share your thoughts..."></textarea>
+                    </div>
+                    <button type="submit" class="btn">Submit Review</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Related Products -->
+    <div style="margin-top: 40px;">
+        <h3>You Might Also Like</h3>
+        <div id="related-products" class="products-grid"
+            style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; margin-top: 20px;">
+            <!-- Injected via JS -->
+        </div>
+    </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/user.js"></script>
+</body>
+
+</html>

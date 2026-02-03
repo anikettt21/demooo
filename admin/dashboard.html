@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body class="admin-body">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h2>Admin Panel</h2>
+        <ul class="sidebar-nav">
+            <li><a href="dashboard.html" class="active">Dashboard</a></li>
+            <li><a href="manage-products.html">Products</a></li>
+            <li><a href="add-product.html">Add Product</a></li>
+            <li><a href="manage-orders.html">Orders</a></li>
+        </ul>
+        <ul class="sidebar-logout">
+            <li><a href="#" id="admin-logout">Logout</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="admin-header">
+            <h3>Dashboard</h3>
+            <span>Welcome, Admin</span>
+        </header>
+
+        <div class="content-padding">
+            <div id="dashboard-stats" class="stats-grid">
+                <div class="stat-card">
+                    <h3><span id="total-products">0</span></h3>
+                    <p>Total Products</p>
+                </div>
+                <div class="stat-card">
+                    <h3><span id="total-orders">0</span></h3>
+                    <p>Total Orders</p>
+                </div>
+                <div class="stat-card">
+                    <h3><span id="total-revenue">0</span></h3>
+                    <p>Total Revenue</p>
+                </div>
+                <!-- Optional: Users count -->
+                <div class="stat-card">
+                    <h3><span id="total-users">0</span></h3>
+                    <p>Registered Users</p>
+                </div>
+            </div>
+
+            <!-- Chart Section -->
+            <div class="admin-card"
+                style="background:var(--card-bg); padding:20px; border-radius:8px; box-shadow:var(--shadow-sm); margin-bottom:30px;">
+                <h3 style="margin-bottom:20px;">Sales Overview</h3>
+                <div style="position: relative; height: 300px; width: 100%;">
+                    <canvas id="salesChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Could add recent orders table here as well -->
+        </div>
+    </main>
+
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/data.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/admin.js"></script>
+</body>
+
+</html>

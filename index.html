@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Hub - Ultimate Tech Store</title>
+    <!-- Google Fonts: Outfit -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="images/logo.png" alt="Computer Hub" style="height: 40px; display: block;">
+                Computer Hub
+            </div>
+            <!-- Mobile toggle removed -->
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active"><i class="fa-solid fa-house"></i> Home</a></li>
+                    <li><a href="about.html"><i class="fa-solid fa-circle-info"></i> About</a></li>
+                    <li><a href="cart.html" id="cart-link"><i class="fa-solid fa-cart-shopping"></i> Cart (0)</a></li>
+                    <!-- Auth links injected by auth.js -->
+                    <li id="auth-links"></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container hero-container">
+            <div class="hero-text">
+                <h1>Upgrade Your <br><span class="highlight-text">Digital Reality</span></h1>
+                <p>Experience the latest in high-performance computing. From workstations to gaming rigs, we have the
+                    gear you need.</p>
+                <a href="#products-grid" class="btn btn-lg">Shop Now <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="hero-image">
+                <!-- Using the generated image path (assuming user copies it or I place it) -->
+                <!-- Ideally I should move the generated image to the right folder. 
+                     For now I will reference the artifact path if local or a placeholder if logic differs.
+                     Since I cannot 'move' files easily without knowing the artifact path precisely in relation to web root...
+                     I will use a placeholder logic or assume the user puts 'hero.png' in images. -->
+                <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?q=80&w=2574&auto=format&fit=crop"
+                    alt="Hero Setup">
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Filters -->
+        <div
+            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;">
+            <h2>Products</h2>
+
+            <div style="display: flex; gap: 10px; flex-grow: 1; justify-content: flex-end;">
+                <input type="text" id="search-input" placeholder="Search products..."
+                    style="max-width: 300px; padding: 10px;">
+                <select id="category-filter"
+                    style="padding: 10px; border-radius: 5px; border: 1px solid #ccc; width: auto;">
+                    <option value="All">All Categories</option>
+                    <option value="Laptops">Laptops</option>
+                    <option value="Monitors">Monitors</option>
+                    <option value="Accessories">Accessories</option>
+                    <option value="Components">Components</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Products Grid -->
+        <div id="products-grid" class="products-grid">
+            <!-- Rendered by JS -->
+            <p>Loading products...</p>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/user.js"></script>
+
+    <script>
+        // Shared Footer Injection
+        const footerHTML = `
+        <footer>
+            <div class="container footer-grid">
+                <div class="footer-col">
+                    <div class="logo" style="margin-bottom: 20px;">Computer Hub</div>
+                    <p style="color: var(--text-muted);">The one-stop shop for all your computing needs.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Shop</h4>
+                    <ul>
+                        <li><a href="index.html">All Products</a></li>
+                        <li><a href="index.html">Laptops</a></li>
+                        <li><a href="index.html">Components</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <div style="display: flex; gap: 15px; font-size: 1.5rem;">
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 20px; color: var(--text-muted);">
+                &copy; 2026 Computer Hub. All rights reserved.
+            </div>
+        </footer>
+        `;
+        document.body.insertAdjacentHTML('beforeend', footerHTML);
+    </script>
+</body>
+
+</html>

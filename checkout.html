@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Computer Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .checkout-container {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .checkout-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section-title {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .payment-methods {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .method-card {
+            flex: 1;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .method-card.active,
+        .method-card:hover {
+            border-color: var(--primary-color);
+            background: rgba(52, 152, 219, 0.05);
+        }
+
+        .summary-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            height: fit-content;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .total-row {
+            border-top: 2px solid var(--border-color);
+            padding-top: 15px;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container header-content">
+            <div class="logo"><i class="fa-solid fa-microchip"></i> Computer Hub</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+                    <li><a href="cart.html"><i class="fa-solid fa-arrow-left"></i> Back to Cart</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container checkout-container">
+        <!-- LEFT: Forms -->
+        <div class="checkout-forms">
+            <h2 class="section-title"><i class="fa-solid fa-truck-fast"></i> Shipping & Billing</h2>
+            <form id="checkout-form">
+                <div class="form-group">
+                    <label>Full Name *</label>
+                    <input type="text" id="ship-name" required placeholder="John Doe">
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="form-group">
+                        <label>Mobile Number *</label>
+                        <input type="tel" id="ship-mobile" required placeholder="+1 234 567 8900">
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address (optional)</label>
+                        <input type="email" id="ship-email" placeholder="john@example.com">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>House / Flat No *</label>
+                    <input type="text" id="ship-house" required placeholder="Apt 4B">
+                </div>
+
+                <div class="form-group">
+                    <label>Street / Area *</label>
+                    <input type="text" id="ship-street" required placeholder="123 Tech Street">
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="form-group">
+                        <label>City *</label>
+                        <input type="text" id="ship-city" required placeholder="New York">
+                    </div>
+                    <div class="form-group">
+                        <label>State *</label>
+                        <input type="text" id="ship-state" required placeholder="NY">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Pincode *</label>
+                    <input type="text" id="ship-pincode" required placeholder="10001">
+                </div>
+
+                <div class="form-group" style="margin-top: 20px;">
+                    <label>Order Notes (optional)</label>
+                    <textarea id="order-notes" rows="3" placeholder="Special instructions for delivery..."></textarea>
+                </div>
+
+                <h2 class="section-title" style="margin-top: 30px;"><i class="fa-regular fa-credit-card"></i> Payment
+                    Method</h2>
+
+                <div class="payment-selection"
+                    style="background: var(--card-bg); padding: 15px; border: 1px solid var(--border-color); border-radius: 8px;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <input type="radio" id="pay-cod" name="payment-method" value="Cash on Delivery" checked
+                            style="accent-color: var(--primary-color); width: 20px; height: 20px;">
+                        <label for="pay-cod"
+                            style="font-weight: 600; font-size: 1.1em; cursor: pointer; margin: 0;">Cash on
+                            Delivery</label>
+                    </div>
+                    <p style="margin-top: 5px; color: #666; font-size: 0.9em; margin-left: 30px;">Pay securely with cash
+                        upon receipt of your order.</p>
+                </div>
+
+            </form>
+        </div>
+
+        <!-- RIGHT: Summary -->
+        <div class="summary-card">
+            <h3>Order Summary</h3>
+            <div id="order-items-list" style="margin: 20px 0; max-height: 200px; overflow-y: auto; font-size: 0.9em;">
+                <!-- Injected via JS -->
+            </div>
+
+            <div class="summary-row"><span>Subtotal</span> <span id="summ-subtotal">$0.00</span></div>
+            <div class="summary-row"><span>Tax (5%)</span> <span id="summ-tax">$0.00</span></div>
+            <div class="summary-row"><span>Shipping</span> <span id="summ-ship">Free</span></div>
+            <div class="summary-row total-row"><span>Total</span> <span id="summ-total"
+                    style="color: var(--primary-color);">$0.00</span></div>
+
+            <button onclick="processCheckout()" class="btn"
+                style="width: 100%; margin-top: 20px; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px;">
+                PLACE ORDER
+            </button>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/user.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        // Inline script for checkout logic
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadCheckoutSummary();
+            const user = getCurrentUser();
+            if (user) {
+                document.getElementById('ship-name').value = user.name;
+                document.getElementById('ship-email').value = user.email || '';
+                // Address prefilling might be complex with split fields so leaving blank or doing basic split if needed
+            }
+        });
+
+        function loadCheckoutSummary() {
+            const cart = getCart();
+            if (cart.length === 0) {
+                window.location.href = 'cart.html';
+                return;
+            }
+
+            const list = document.getElementById('order-items-list');
+            let subtotal = 0;
+
+            cart.forEach(item => {
+                const total = item.price * item.quantity;
+                subtotal += total;
+                list.innerHTML += `
+                    <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+                        <span>${item.quantity}x ${item.name}</span>
+                        <span>$${total.toFixed(2)}</span>
+                    </div>
+                `;
+            });
+
+            const tax = subtotal * 0.05;
+            const total = subtotal + tax;
+
+            document.getElementById('summ-subtotal').textContent = '$' + subtotal.toFixed(2);
+            document.getElementById('summ-tax').textContent = '$' + tax.toFixed(2);
+            document.getElementById('summ-total').textContent = '$' + total.toFixed(2);
+        }
+
+        function processCheckout() {
+            const form = document.getElementById('checkout-form');
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            const btn = document.querySelector('button[onclick="processCheckout()"]');
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Processing...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                // Construct Address String
+                const house = document.getElementById('ship-house').value;
+                const street = document.getElementById('ship-street').value;
+                const city = document.getElementById('ship-city').value;
+                const state = document.getElementById('ship-state').value;
+                const pincode = document.getElementById('ship-pincode').value;
+                const mobile = document.getElementById('ship-mobile').value;
+                const email = document.getElementById('ship-email').value;
+                const notes = document.getElementById('order-notes').value;
+
+                const fullAddress = `${house}, ${street}, ${city}, ${state} - ${pincode}`;
+                const fullContact = `Mobile: ${mobile}` + (email ? `, Email: ${email}` : '');
+
+                // Construct Order
+                const cart = getCart();
+                const total = parseFloat(document.getElementById('summ-total').textContent.replace('$', ''));
+
+                const order = {
+                    userId: getCurrentUser() ? getCurrentUser().email : 'guest',
+                    items: cart,
+                    totalAmount: total,
+                    paymentMethod: 'Cash on Delivery',
+                    shippingAddress: fullAddress + ' | ' + fullContact + (notes ? ' | Notes: ' + notes : '')
+                };
+
+                placeOrder(order);
+                clearCart();
+
+                // Show Success
+                document.body.innerHTML = `
+                    <div style="height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
+                        <i class="fa-solid fa-circle-check" style="font-size: 5rem; color: var(--secondary-color); margin-bottom: 20px;"></i>
+                        <h1>Order Placed!</h1>
+                        <p>Thank you for shopping with Computer Hub.</p>
+                        <p style="color:#666; margin-top:10px;">Order ID: #${order.id || 'Generated'}</p>
+                        <a href="index.html" class="btn" style="margin-top:20px;">Continue Shopping</a>
+                    </div>
+                `;
+            }, 2000);
+        }
+    </script>
+</body>
+
+</html>

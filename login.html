@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Computer Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body style="background-color: #f4f4f9;">
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Computer Hub" style="height: 40px; display: block;">
+                Computer Hub
+            </div>
+            <!-- Nav links removed as requested -->
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="auth-container">
+            <h2 id="form-title" class="form-title">Login</h2>
+
+            <form id="auth-form">
+                <div class="form-group hidden" id="name-group" style="display: none;">
+                    <label>Full Name</label>
+                    <input type="text" id="name">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Submit</button>
+            </form>
+
+            <p style="margin-top: 15px; text-align: center;">
+                <span id="toggle-text">New customer?</span>
+                <a href="#" id="toggle-auth" style="color: var(--primary-color); font-weight: bold;">Register here</a>
+            </p>
+            <p style="margin-top: 20px; text-align: center;">
+                <a href="index.html" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.9rem;">
+                    <i class="fa-solid fa-arrow-left"></i> Back to Home
+                </a>
+            </p>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cart.js"></script>
+    <script>
+        // Simple inline logic for toggling Login/Register
+        const form = document.getElementById('auth-form');
+        const toggleBtn = document.getElementById('toggle-auth');
+        let isLogin = true;
+
+        toggleBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            isLogin = !isLogin;
+            if (isLogin) {
+                document.getElementById('form-title').textContent = 'Login';
+                document.getElementById('name-group').style.display = 'none';
+                document.getElementById('name').required = false;
+                document.getElementById('toggle-text').textContent = 'New customer?';
+                toggleBtn.textContent = 'Register here';
+            } else {
+                document.getElementById('form-title').textContent = 'Register';
+                document.getElementById('name-group').style.display = 'block';
+                document.getElementById('name').required = true;
+                document.getElementById('toggle-text').textContent = 'Already have an account?';
+                toggleBtn.textContent = 'Login here';
+            }
+        });
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const name = document.getElementById('name').value;
+
+            if (isLogin) {
+                const user = authenticateUser(email, password);
+                if (user) {
+                    setCurrentUser(user);
+                    if (user.role === 'admin') window.location.href = 'admin/dashboard.html';
+                    else window.location.href = 'index.html';
+                } else {
+                    alert('Invalid credentials.');
+                }
+            } else {
+                const res = registerUser(name, email, password);
+                if (res.success) {
+                    setCurrentUser(res.user);
+                    window.location.href = 'index.html';
+                } else {
+                    alert(res.message);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

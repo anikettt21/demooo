@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Computer Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="images/logo.png" alt="Computer Hub" style="height: 40px; display: block;">
+                Computer Hub
+            </div>
+            <!-- Mobile toggle removed -->
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+                    <li><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i> Cart</a></li>
+                    <li id="auth-links"></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container" style="padding: 60px 0; text-align: center;">
+        <h1 style="font-size: 3rem; margin-bottom: 20px;">Empowering Your <span class="highlight-text">Digital
+                Life</span></h1>
+        <p style="max-width: 800px; margin: 0 auto 40px; font-size: 1.2rem; color: var(--text-muted);">
+            Computer Hub started in 2024 with a simple mission: To provide high-quality tech components to enthusiasts,
+            gamers, and professionals at unbeatable prices.
+        </p>
+
+        <img src="https://images.unsplash.com/photo-1531297425163-4d00e12932a3?fit=crop&w=1200&h=400"
+            style="width: 100%; height: 400px; object-fit: cover; border-radius: var(--radius); box-shadow: var(--shadow-lg); margin-bottom: 60px;">
+
+        <div
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; text-align: left;">
+            <div class="admin-card" style="padding: 30px; background: var(--card-bg); border-radius: var(--radius);">
+                <i class="fa-solid fa-rocket fa-3x" style="color: var(--primary-color); margin-bottom: 20px;"></i>
+                <h3>Fast Delivery</h3>
+                <p>We partner with top logistics providers to ensure your gear arrives safe and fast.</p>
+            </div>
+            <div class="admin-card" style="padding: 30px; background: var(--card-bg); border-radius: var(--radius);">
+                <i class="fa-solid fa-headset fa-3x" style="color: var(--secondary-color); margin-bottom: 20px;"></i>
+                <h3>24/7 Support</h3>
+                <p>Our team of tech experts is always ready to help you troubleshoot or build.</p>
+            </div>
+            <div class="admin-card" style="padding: 30px; background: var(--card-bg); border-radius: var(--radius);">
+                <i class="fa-solid fa-shield-halved fa-3x" style="color: var(--accent-color); margin-bottom: 20px;"></i>
+                <h3>2 Year Warranty</h3>
+                <p>Peace of mind with our extended warranty on all major components.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Injection -->
+    <div id="footer-placeholder"></div>
+
+    <script src="js/data.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/user.js"></script>
+    <script>
+        // Simple Footer Injection for Demo consistency
+        // ideally this is a JS component or Server Side Include
+        const footerHTML = `
+        <footer>
+            <div class="container footer-grid">
+                <div class="footer-col">
+                    <div class="logo" style="margin-bottom: 20px;">Computer Hub</div>
+                    <p style="color: var(--text-muted);">The one-stop shop for all your computing needs.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Shop</h4>
+                    <ul>
+                        <li><a href="index.html">All Products</a></li>
+                        <li><a href="index.html">Laptops</a></li>
+                        <li><a href="index.html">Components</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <div style="display: flex; gap: 15px; font-size: 1.5rem;">
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 20px; color: var(--text-muted);">
+                &copy; 2026 Computer Hub. All rights reserved.
+            </div>
+        </footer>
+        `;
+        document.body.insertAdjacentHTML('beforeend', footerHTML);
+    </script>
+</body>
+
+</html>
